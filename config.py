@@ -29,9 +29,14 @@ OUTPUT_DIR = 'C:\\Users\\dsn\\Desktop\\question_answering\\question_answering_sy
 PASSAGE_METADATA_FILENAME = 'passage_metadata.csv'
 EMBEDDED_PASSAGE_METADATA_FILENAME = 'passage_metadata_emb.csv'
 OUTPUT_FILENAME = 'questions_answers.csv'
+GENERATIVE_ANSWERS_FILENAME = 'questions_answers_gen.csv'
 
 # Index Name
-INDEX_NAME = 'passage_metadata_embeddings_index'
+INDEX_NAME = 'passage_metadata_embeddings1_index'
 
 # Model Name
 MODEL_NAME = 'paraphrase-MiniLM-L6-v2'
+
+# API KEY
+OPENAI_API_KEY = 'your_openai_api_key'
+
