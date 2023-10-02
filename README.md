@@ -86,12 +86,6 @@ This project is a robust Question Answering System utilizing Elasticsearch, Stre
 All the project files and the latest version of this project can be found on [GitHub](https://github.com/ConceptualCode/question_answering_system.git).
 
 ### Contribution & Support:
-Feel free to contribute, report issues, or make feature requests in the GitHub repository. For additional support or inquiries, you can reach out to <Your Contact Information>.
-
-### License:
-This project is licensed under the terms of the <Your License>.
-
-### Acknowledgements:
-This project is submitted as a test for a role at Kwame AI. Special thanks to the entire team for providing the opportunity to work on such an interesting project.
+Feel free to contribute, report issues, or make feature requests in the GitHub repository. For additional support or inquiries, you can reach out to https://www.linkedin.com/in/anthony-soronnadi/
 
 ---
