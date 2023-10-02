@@ -1,7 +1,7 @@
 ### Project Title: Question Answering System
 
 #### Overview:
-This project is a robust Question Answering System utilizing Elasticsearch, Streamlit, and advanced Natural Language Processing (NLP) techniques. It provides an interactive user interface allowing users to upload documents and ask questions related to the uploaded documents. The system then retrieves the most relevant passages from the documents and generates precise answers.
+This project is a robust Question Answering System utilizing Elasticsearch, Streamlit, and advanced Natural Language Processing (NLP) techniques. It provides an interactive user interface allowing users to upload documents and ask questions related to the uploaded documents. The system then retrieves the most relevant passages from the documents and generates precise answers using Elasticsearch and GPT2 model.
 
 ### Features:
 - Document Upload & Indexing
