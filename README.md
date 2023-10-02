@@ -63,7 +63,7 @@ This project is a robust Question Answering System utilizing Elasticsearch, Stre
     
   - **Dockerfile**: Specifies the steps to create the Docker image, ensuring the project can be easily deployed and run in any environment supporting Docker.
     
-  - **your_embedding_model.py**: (Hypothetical) Contains the logic and structures related to the embedding model used for document representation.
+  - **model.py**: Contains model used for extracting embeddings of the document representations.
     
   - **config.py**: Holds the configuration variables and settings used throughout the project, such as Elasticsearch details and other global parameters.
     
