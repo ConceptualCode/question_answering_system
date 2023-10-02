@@ -29,7 +29,7 @@ class Retriever:
     
     def retrieve_passages(self, question_embedding, question):
         data = {
-            "size": 3,
+            "size": 5,
             "query": {
                 "script_score": {
                     "query": {"match_all": {}},
@@ -53,14 +53,28 @@ class Retriever:
             print(f"Failed to retrieve documents. Error: {response.text}")
             return []
         
-        return response.json()['hits']['hits']
+        hits = response.json()['hits']['hits']
+        
+        # Check if the retrieved documents are unique.
+        unique_hits = {}
+        for hit in hits:
+            source = hit.get('_source', {})
+            passage = source.get('Passage', '')
+            if passage not in unique_hits: 
+                unique_hits[passage] = hit
+        
+        # Return only the unique hits.
+        return list(unique_hits.values())
+
     
 
-    def create_prompt(self, passages):
-        prompt = "Based on the following passages, ...\n"
-        for passage in passages:
-            prompt += f"{passage}\n"
-        return prompt
+    def create_prompt(self, retrieved_passages):
+        
+        if retrieved_passages:
+            return "Based on the following passage, ...\n" + retrieved_passages[0]['passage']
+        return ""
+
+
         
     def write_to_csv(self, question, retrieved_passages, generative_answer):
         with open(self.gen_filename, mode='w', newline='', encoding='utf-8') as file:
@@ -69,6 +83,8 @@ class Retriever:
                 'Question', 'Passage 1', 'Relevance Score 1', 'Passage 1 Metadata',
                 'Passage 2', 'Relevance Score 2', 'Passage 2 Metadata',
                 'Passage 3', 'Relevance Score 3', 'Passage 3 Metadata',
+                'Passage 4', 'Relevance Score 4', 'Passage 4 Metadata',
+                'Passage 5', 'Relevance Score 5', 'Passage 5 Metadata',
                 'Generative AI Answer'
             ])
             
@@ -96,11 +112,19 @@ class Retriever:
             
             prompt = self.create_prompt(retrieved_passages)
             generative_answer = self.gen_ai.generate_answer(prompt)
-            
+            print(generative_answer)
             # Write data to CSV
             self.write_to_csv(question, retrieved_passages, generative_answer)
+
+            # Forming proper response
+            return {
+                'passages': retrieved_passages,
+                'generative_answer': generative_answer
+            }
         else:
             print("No data to write.")
+
+        return None # retrieved_passages, generative_answer
 
 # if __name__ == "__main__":
 #     retriever = Retriever()
